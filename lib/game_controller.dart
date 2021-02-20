@@ -22,6 +22,7 @@ class GameController extends Game {
   void update(double t) {}
   void resize(Size size) {
     screenSize = size;
+    // create the tiles? But we might create the characters
     tileSize = screenSize.width / 10;
   }
 }
