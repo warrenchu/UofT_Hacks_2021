@@ -40,7 +40,6 @@ class _storeFrontState extends State<storeFront> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            // For onPressed, activate the actual game
             onPressed: () {
               // the actual main method is called rungame in maingame.dart
               // transition over to the game
@@ -58,10 +57,8 @@ class _storeFrontState extends State<storeFront> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            // For onPressed, activate the actual game
             onPressed: () {
-              // the actual main method is called rungame in maingame.dart
-              // transition over to the game
+              // Go to page
             },
             child: Text("Shirt",
                 textAlign: TextAlign.center,
@@ -76,10 +73,8 @@ class _storeFrontState extends State<storeFront> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            // For onPressed, activate the actual game
             onPressed: () {
-              // the actual main method is called rungame in maingame.dart
-              // transition over to the game
+              // Go to page
             },
             child: Text("Pants",
                 textAlign: TextAlign.center,
@@ -87,6 +82,66 @@ class _storeFrontState extends State<storeFront> {
                     color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ),
+         Material(
+          elevation: 6.0,
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              // Go to page
+            },
+            child: Text("Shoes",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ),
+         Material(
+          elevation: 6.0,
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              // Go to page
+            },
+            child: Text("Accessories",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ),
+        Material(
+          elevation: 6.0,
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              // Go to page
+            },
+            child: Text("Home",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ),
+        Material(
+          elevation: 6.0,
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              // Go to page
+            },
+            child: Text("Pets",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        )
       ],
     );
 
