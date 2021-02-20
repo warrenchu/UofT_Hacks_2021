@@ -5,6 +5,56 @@ import 'package:flutter/widgets.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'store_front.dart';
+
+class runGameApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeState();
+  }
+}
+
+class _HomeState extends State<Home> {
+  int _currentIndex = 0;
+  final List<Widget> _children = [StoreFront()];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Welcome'),
+      ),
+      body: Stack(fit: StackFit.expand, children: [GameController().widget]),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0, // this will be set when a new tab is tapped
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.home),
+            title: new Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.local_convenience_store),
+            title: new Text('Store'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+}
 
 void rungame() async {
 // create util instance to start flame
@@ -18,22 +68,6 @@ void rungame() async {
   //runApp(gameController.widget);
   // I decided to run the game within a Stack so that we can render elements
   // over the background
-  runApp(MaterialApp(
-      title: 'RBC Savings Game',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Welcome!'), actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.arrow_back),
-            tooltip: "Log out",
-            onPressed: () {
-              MyApp();
-            },
-          )
-        ]),
-        body: Stack(
-          fit: StackFit.expand,
-          children: [gameController.widget],
-        ),
-      )));
+
+  runApp(runGameApp());
 }

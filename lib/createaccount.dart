@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'main.dart';
+import 'questionnaire.dart';
 
 class CreateNewAccount extends StatelessWidget {
   @override
@@ -94,9 +94,11 @@ class CreateNewAccount extends StatelessWidget {
             AppBar(title: const Text('Create an account'), actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.arrow_forward_ios),
-            tooltip: "Return to login screen",
+            tooltip: "Create account",
             onPressed: () {
               // when the questionnaire is ready...
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Questionnaire()));
             },
           )
         ]),
