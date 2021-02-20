@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'maingame.dart';
+import 'createaccount.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -75,8 +76,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          // For onPressed, activate the actual game
-          onPressed: () {},
+          // For onPressed, activaate the actual gme
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CreateNewAccount()));
+          },
           // TODO: create a way to make an account,
           child: Text("Create an account",
               textAlign: TextAlign.center,
