@@ -9,7 +9,7 @@ class Background {
   Sprite bgSprite;
   Rect bgRect;
   Background(this.game) {
-    bgSprite = Sprite('assets/images/background.png');
+    bgSprite = Sprite("background.png");
     bgRect = Rect.fromLTWH(0, game.screenSize.height - (game.tileSize * 16),
         game.tileSize * 9, game.tileSize * 16);
   }

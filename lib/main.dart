@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // RBC Logo?
                 SizedBox(
                   height: 155.0,
-                  child: Image.asset("/assets/images/rbcLogo.png",
+                  child: Image.asset("assets/images/rbcLogo.png",
                       fit: BoxFit.contain),
                 ),
                 SizedBox(
@@ -112,6 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 passwordField,
                 SizedBox(height: 35.0),
                 loginButton,
+                SizedBox(height: 30.0),
+                newuserButton,
               ],
             ),
           ),
