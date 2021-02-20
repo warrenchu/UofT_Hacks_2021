@@ -1,9 +1,7 @@
-import 'package:flame/util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:rbc_savings_game/game_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flame_splash_screen/flame_splash_screen.dart';
+import 'maingame.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -59,7 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         // For onPressed, activate the actual game
-        onPressed: () {},
+        onPressed: () {
+          // the actual main method is called rungame in maingame.dart
+          rungame();
+        },
         child: Text("Login",
             textAlign: TextAlign.center,
             style: style.copyWith(
@@ -80,7 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 // need a logo, so just added a title first
                 // RBC Logo?
                 SizedBox(
-                    height: 155.0,
+                  height: 155.0,
+                  child:
+                      Image.asset("/assets/rbcLogo.png", fit: BoxFit.contain),
+                ),
+                SizedBox(
+                    height: 50.0,
                     child: Text("Welcome to the Savings Game!",
                         textDirection: TextDirection.ltr)),
 
@@ -100,15 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
-//void main() async {
-// create util instance to start flame
-//Util flameUtil = Util();
 
-//await flameUtil.fullScreen();
-//await flameUtil.setOrientation(DeviceOrientation.portraitUp);
-//GameController gameController = GameController();
-//runApp(gameController.widget);
-//}
 void main() {
   runApp(MyApp());
 }
