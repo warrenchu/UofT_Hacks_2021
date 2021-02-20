@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // For onPressed, activate the actual game
         onPressed: () {
           // the actual main method is called rungame in maingame.dart
+          // transition over to the game
           rungame();
         },
         child: Text("Login",

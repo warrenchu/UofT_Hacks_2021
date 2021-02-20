@@ -16,7 +16,8 @@ class GameController extends Game {
   void render(Canvas c) {
     Rect background = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
     // white background
-    Paint backgroundPaint = Paint()..color = Color(0xFFFAFAFA);
+    Paint backgroundPaint = Paint()..color = Color(0xFF1ADFA8);
+    c.drawRect(background, backgroundPaint);
   }
 
   void update(double t) {}
