@@ -256,9 +256,66 @@ class _QuestionnairePageState3 extends StatelessWidget {
                 SizedBox(height: 10.0),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => _QuestionnairePageState4()),
+                    );
                   },
                   child: Text('Next'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _QuestionnairePageState4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final question3 = TextField(
+      obscureText: false,
+      style: style,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "Round to the Nearest Dollar",
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+    );
+
+    return Scaffold(
+      appBar: AppBar(title: Text('Personal Info: Initial Deposit')),
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(36.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                    height: 70.0,
+                    child: Text("How Much Do You Want To Deposit Initially?",
+                        textScaleFactor: 1.3,
+                        textDirection: TextDirection.ltr)),
+                SizedBox(
+                    height: 70.0,
+                    child: Text("This amount will act as the baseline for your Avatar.",
+                        textDirection: TextDirection.ltr)),
+                question3,
+                SizedBox(height: 10.0),
+                ElevatedButton(
+                  onPressed: () {
+                    // Go to Next Screen
+                  },
+                  child: Text('Submit User Info'),
                 ),
               ],
             ),
