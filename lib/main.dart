@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:rbc_savings_game/game_controller.dart';
 
 void main() async {
+  // create util instance to start flame
   Util flameUtil = Util();
 
   await flameUtil.fullScreen();
