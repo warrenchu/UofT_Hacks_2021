@@ -33,8 +33,7 @@ class MyAppBar extends StatelessWidget {
             padding: const EdgeInsets.all(4),
             // children: _buildGridTileList(10))
         ))
-        
-      ],
+        )],
     );
   }
 }
