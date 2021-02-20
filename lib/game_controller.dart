@@ -15,12 +15,14 @@ class GameController extends Game {
 
   void render(Canvas c) {
     Rect background = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
+    // white background
     Paint backgroundPaint = Paint()..color = Color(0xFFFAFAFA);
   }
 
   void update(double t) {}
   void resize(Size size) {
     screenSize = size;
+    // create the tiles? But we might create the characters
     tileSize = screenSize.width / 10;
   }
 }
