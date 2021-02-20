@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'maingame.dart';
 
 class Questionnaire extends StatelessWidget {
   @override
@@ -228,6 +229,7 @@ class _QuestionnairePageState4 extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Go to Next Screen
+                    runGameApp();
                   },
                   child: Text('Submit User Info'),
                 ),
