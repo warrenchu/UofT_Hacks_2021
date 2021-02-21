@@ -8,6 +8,7 @@ import 'package:rbc_savings_game/money_tracker.dart';
 import 'package:rbc_savings_game/questionnaire.dart';
 import 'main.dart';
 import 'store_front.dart';
+import 'money_tracker.dart';
 
 class runGameApp extends StatelessWidget {
   @override
@@ -57,7 +58,9 @@ class _HomeState extends State<Home> {
           },
         )
       ]),
-      body: Stack(fit: StackFit.expand, children: [GameController().widget]),
+      body: Stack(fit: StackFit.expand, children: [
+        Positioned.fill(child: GameController().widget),
+      ]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0, // this will be set when a new tab is tapped
         items: [
