@@ -56,16 +56,16 @@ class _HomeState extends State<Home> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MoneyTracker()));
             }),
-        IconButton(
-          icon: const Icon(Icons.person),
-          tooltip: "Character Creator",
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MaterialApp(home: CharacterCreate())));
-          },
-        )
+        // IconButton(
+        //   icon: const Icon(Icons.person),
+        //   tooltip: "Character Creator",
+        //   onPressed: () {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => MaterialApp(home: CharacterCreate())));
+        //   },
+        // )
       ]),
       body: Stack(fit: StackFit.expand, children: [GameController().widget]),
       bottomNavigationBar: BottomNavigationBar(
