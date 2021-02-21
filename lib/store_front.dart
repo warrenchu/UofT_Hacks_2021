@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:rbc_savings_game/maingame.dart';
-
+import 'maingame.dart';
 import 'store_catalogue.dart';
 
 class StoreFront extends StatelessWidget {
@@ -135,7 +135,10 @@ class _storeFrontState extends State<storeFront> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          runGameApp();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Home()),
+          );
         },
         child: Text("Exit Store",
             textAlign: TextAlign.center,
