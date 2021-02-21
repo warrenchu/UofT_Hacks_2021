@@ -10,8 +10,8 @@ class Background {
   Rect bgRect;
   Background(this.game) {
     bgSprite = Sprite("background.png");
-    bgRect = Rect.fromLTWH(0, game.screenSize.height - (game.tileSize * 16),
-        game.tileSize * 9, game.tileSize * 16);
+    bgRect = Rect.fromLTWH(0, game.screenSize.height - (game.tileSize * 22),
+        game.tileSize * 10, game.tileSize * 22);
   }
 
   void render(Canvas c) {

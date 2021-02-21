@@ -229,7 +229,7 @@ class _QuestionnairePageState4 extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Go to Next Screen
-                    runGameApp();
+                    rungame();
                   },
                   child: Text('Submit User Info'),
                 ),

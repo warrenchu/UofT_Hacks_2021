@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:rbc_savings_game/maingame.dart';
 
 class StoreFront extends StatelessWidget {
   @override
@@ -157,6 +158,7 @@ class _storeFrontState extends State<storeFront> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         // For onPressed, activate the actual game
         onPressed: () {
+          Navigator.pop(context);
           // the actual main method is called rungame in maingame.dart
           // transition over to the game
         },

@@ -36,8 +36,8 @@ class _HomeState extends State<Home> {
           icon: const Icon(Icons.local_convenience_store),
           tooltip: "Go to store",
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MoneyTracker()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => StoreFront()));
           },
         ),
         IconButton(
@@ -46,6 +46,14 @@ class _HomeState extends State<Home> {
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => Questionnaire()));
+          },
+        ),
+        IconButton(
+          icon: const Icon(Icons.monetization_on_outlined),
+          tooltip: "Money tracker",
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MoneyTracker()));
           },
         )
       ]),
