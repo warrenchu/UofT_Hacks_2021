@@ -67,6 +67,27 @@ buildTextField() {
   return tempField;
 }
 
+// Scaffold Template
+buildScaffold(appBarTitle, givenChildren){
+  final tempScaffold = Scaffold(
+      appBar: AppBar(title: Text(appBarTitle)),
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(36.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: givenChildren,
+            ),
+          ),
+        ),
+      ),
+    );
+  return tempScaffold;
+}
+
 class _QuestionnairePageState1 extends State<QuestionnairePage> {
   @override
   Widget build(BuildContext context) {
@@ -78,17 +99,7 @@ class _QuestionnairePageState1 extends State<QuestionnairePage> {
     final question1a3 =
         buildButton(context, _QuestionnairePageState2(), "Hourly Wage");
 
-    return Scaffold(
-      appBar: AppBar(title: Text('Personal Info: Work')),
-      body: Center(
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+    final q1Children = <Widget>[
                 SizedBox(
                     height: 50.0,
                     child: Text("What type of work do you do?",
@@ -100,12 +111,8 @@ class _QuestionnairePageState1 extends State<QuestionnairePage> {
                 question1a2,
                 SizedBox(height: 15.0),
                 question1a3,
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              ];
+    return buildScaffold('Personal Info: Work', q1Children);
   }
 }
 
@@ -119,17 +126,7 @@ class _QuestionnairePageState2 extends StatelessWidget {
     final question2a3 =
         buildButton(context, _QuestionnairePageState3(), "Intermittently");
 
-    return Scaffold(
-      appBar: AppBar(title: Text('Personal Info: Pay Frequency')),
-      body: Center(
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+    final q2Children = <Widget>[
                 SizedBox(
                     height: 50.0,
                     child: Text("How often do you get paid?",
@@ -141,12 +138,8 @@ class _QuestionnairePageState2 extends StatelessWidget {
                 question2a2,
                 SizedBox(height: 15.0),
                 question2a3
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              ];
+    return buildScaffold('Personal Info: Pay Frequency', q2Children);
   }
 }
 
@@ -155,17 +148,7 @@ class _QuestionnairePageState3 extends StatelessWidget {
   Widget build(BuildContext context) {
     final question3 = buildTextField();
 
-    return Scaffold(
-      appBar: AppBar(title: Text('Personal Info: Fund Goal')),
-      body: Center(
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+    final q3Children = <Widget>[
                 SizedBox(
                     height: 70.0,
                     child: Text(
@@ -189,12 +172,8 @@ class _QuestionnairePageState3 extends StatelessWidget {
                   },
                   child: Text('Next'),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              ];
+    return buildScaffold('Personal Info: Fund Goal', q3Children);
   }
 }
 
@@ -203,17 +182,7 @@ class _QuestionnairePageState4 extends StatelessWidget {
   Widget build(BuildContext context) {
     final question4 = buildTextField();
 
-    return Scaffold(
-      appBar: AppBar(title: Text('Personal Info: Initial Deposit')),
-      body: Center(
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+    final q4Children = <Widget>[
                 SizedBox(
                     height: 70.0,
                     child: Text("How Much Do You Want To Deposit Initially?",
@@ -233,12 +202,8 @@ class _QuestionnairePageState4 extends StatelessWidget {
                   },
                   child: Text('Submit User Info'),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              ];
+    return buildScaffold('Personal Info: Initial Deposit', q4Children);
   }
 }
 
