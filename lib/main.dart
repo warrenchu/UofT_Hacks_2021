@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'maingame.dart';
+import 'createaccount.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -59,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // For onPressed, activate the actual game
         onPressed: () {
           // the actual main method is called rungame in maingame.dart
+          // transition over to the game
           rungame();
         },
         child: Text("Login",
@@ -67,6 +69,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
+    final newuserButton = Material(
+        elevation: 6.0,
+        borderRadius: BorderRadius.circular(30.0),
+        color: Color(0xff01A0C7),
+        child: MaterialButton(
+          minWidth: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          // For onPressed, activaate the actual gme
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CreateNewAccount()));
+          },
+          // TODO: create a way to make an account,
+          child: Text("Create an account",
+              textAlign: TextAlign.center,
+              style: style.copyWith(
+                  color: Colors.white, fontWeight: FontWeight.bold)),
+        ));
 
     return Scaffold(
       body: Center(
@@ -82,8 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 // RBC Logo?
                 SizedBox(
                   height: 155.0,
-                  child:
-                      Image.asset("/assets/rbcLogo.png", fit: BoxFit.contain),
+                  child: Image.asset("assets/images/rbcLogo.png",
+                      fit: BoxFit.contain),
                 ),
                 SizedBox(
                     height: 50.0,
@@ -96,6 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 passwordField,
                 SizedBox(height: 35.0),
                 loginButton,
+                SizedBox(height: 30.0),
+                newuserButton,
               ],
             ),
           ),
