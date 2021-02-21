@@ -73,10 +73,11 @@ class _MoneyTrackerState extends State<MoneyTracker> {
                             style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
                   ),
                 ),
+                SizedBox(height: 15.0,),
                 Material(
                   elevation: 6.0,
                   borderRadius: BorderRadius.circular(3.0),
-                  color: Color(0xff01A0C7),
+                  color: Color(0xffff0000),
                   child: MaterialButton(
                     minWidth: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -86,7 +87,7 @@ class _MoneyTrackerState extends State<MoneyTracker> {
                         builder: (BuildContext context) => _buildPopupDialog(context),
                       );
                     },
-                    child: Text("Deposit Funds",
+                    child: Text("Withdraw Funds",
                         textAlign: TextAlign.center,
                         style:
                             style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),

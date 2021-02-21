@@ -108,7 +108,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 SizedBox(
                     height: 50.0,
-                    child: Text("Welcome to the Savings Game!",
+                    child: Text("Spend2Save",
+                        textScaleFactor: 3.5,
                         textDirection: TextDirection.ltr)),
 
                 SizedBox(height: 45.0),
