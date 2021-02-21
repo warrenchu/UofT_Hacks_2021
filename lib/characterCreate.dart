@@ -53,6 +53,16 @@ class _CharacterViewState extends State<CharacterView> {
         appBar: AppBar(
           title: Text(' Choose your ${widget.character.title}'),
           backgroundColor: widget.character.color,
+          actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.arrow_forward_ios),
+            tooltip: "Create account",
+            onPressed: () {
+              // when the questionnaire is ready...
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => runGameApp()));
+            },
+          )]
         ),
         backgroundColor: widget.character.color[100],
         body: Column(
@@ -82,15 +92,6 @@ class _CharacterViewState extends State<CharacterView> {
                       FirstOption(character: widget.character),
                       SecondOption(character: widget.character)
                     ])),
-            Container(
-                height: 47,
-                color: widget.character.color[75],
-                width: MediaQuery.of(context).size.width,
-                child: TextButton(
-                    child: Text('Proceed'),
-                    onPressed: () {
-                      runGameApp();
-                    }))
           ],
         ));
   }
@@ -130,12 +131,12 @@ class SecondOption extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
+class CharacterCreate extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _CharacterCreateState createState() => _CharacterCreateState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CharacterCreateState extends State<CharacterCreate> {
   int _currentIndex = 0;
 
   @override
@@ -180,5 +181,5 @@ Future<void> saveIntInLocalMemory(String key, int value) async {
 }
 
 void main() {
-  runApp(MaterialApp(home: HomePage(), debugShowCheckedModeBanner: false));
+  runApp(MaterialApp(home: CharacterCreate(), debugShowCheckedModeBanner: false));
 }

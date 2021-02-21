@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'maingame.dart';
+import 'characterCreate.dart';
 
 class Questionnaire extends StatelessWidget {
   @override
@@ -197,8 +198,11 @@ class _QuestionnairePageState4 extends StatelessWidget {
                 SizedBox(height: 10.0),
                 ElevatedButton(
                   onPressed: () {
-                    // Go to Next Screen
-                    rungame();
+                    // Go to Character Creation
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MaterialApp(home: CharacterCreate())));
                   },
                   child: Text('Submit User Info'),
                 ),
