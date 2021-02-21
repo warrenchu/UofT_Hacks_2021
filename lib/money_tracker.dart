@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 // This file creates an app bar component to track pocket money and total saved.
 // Additionally, the app bar will allow users to deposit money into their Pocket Money "Wallet"
 
+final TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+
 void main() => runApp(Tracker());
 
 class Tracker extends StatelessWidget {
@@ -23,77 +25,106 @@ class MoneyTracker extends StatefulWidget {
 }
 
 class _MoneyTrackerState extends State<MoneyTracker> {
-  int savingsCounter = 0;
-  int pocketMoney = 0;
+  int savingsCounter = 600;
+  int pocketMoney = 600;
 
-// Initiate the variables
-  void initState() {
-    super.initState();
-    getIntFromLocalMemory('savingsCounter')
-        .then((value) => savingsCounter = value);
-    getIntFromLocalMemory('pocketMoney').then((n) => pocketMoney = n);
-  }
+// // Initiate the variables
+//   void initState() {
+//     super.initState();
+//     getIntFromLocalMemory('savingsCounter')
+//         .then((value) => savingsCounter = value);
+//     getIntFromLocalMemory('pocketMoney').then((n) => pocketMoney = n);
+//   }
 
-  void addToTotal() {
-    setState(() {
-      savingsCounter++;
-    });
-    saveIntInLocalMemory('savingsCounter', savingsCounter);
-  }
+//   void addToTotal() {
+//     setState(() {
+//       savingsCounter++;
+//     });
+//     saveIntInLocalMemory('savingsCounter', savingsCounter);
+//   }
 
-  void addToPocket() {
-    setState(() {
-      pocketMoney++;
-    });
-    saveIntInLocalMemory('pocketMoney', pocketMoney);
-  }
+//   void addToPocket() {
+//     setState(() {
+//       pocketMoney++;
+//     });
+//     saveIntInLocalMemory('pocketMoney', pocketMoney);
+//   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Total Savings:',
-            ),
-            Text(
-              '$savingsCounter',
-            ),
-            Text(
-              'Pocket Money:',
-            ),
-            Text(
-              '$pocketMoney',
-            ),
-          ],
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.account_balance_wallet_outlined),
-            tooltip: 'Add funds',
-            onPressed: () => {MoneyDrawer},
-          ), //IconButton
-          IconButton(
-            icon: Icon(Icons.settings),
-            tooltip: 'Setting Icon',
-            onPressed: () {},
-          ), //IconButton
-        ],
-      ),
-      body: new Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.fromLTRB(50.0, 160.0, 50.0, 0.0),
-            child: new Column(
+      appBar: AppBar(title: Text('Funding')),
+        //title: 
+        // Column(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   children: <Widget>[
+        //     Text(
+        //       'Total Savings: ${savingsCounter}',
+        //     ),
+        //     Text(
+        //       'Avatar Spending Money: ${pocketMoney}',
+        //     ),
+        //   ],
+        // ),
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.account_balance_wallet_outlined),
+        //     tooltip: 'Add funds',
+        //     onPressed: () => {
+        //       // Something
+        //     },
+        //   ), //IconButton
+        //   IconButton(
+        //     icon: Icon(Icons.settings),
+        //     tooltip: 'Setting Icon',
+        //     onPressed: () {},
+        //   ), //IconButton
+        // ],
+      // ),
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(36.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[],
+              children: <Widget>[
+                SizedBox(
+                          height: 70.0,
+                          child: Text(
+                              'Total Savings: ${savingsCounter}',
+                              textScaleFactor: 2,
+                              textDirection: TextDirection.ltr)),
+                SizedBox(
+                          height: 70.0,
+                          child: Text(
+                              'Pocket Money: ${pocketMoney}',
+                              textScaleFactor: 2,
+                              textDirection: TextDirection.ltr)),
+                Material(
+                  elevation: 6.0,
+                  borderRadius: BorderRadius.circular(3.0),
+                  color: Color(0xff01A0C7),
+                  child: MaterialButton(
+                    minWidth: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => _buildPopupDialog(context),
+                      );
+                    },
+                    child: Text("Deposit Funds",
+                        textAlign: TextAlign.center,
+                        style:
+                            style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+              ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
     // save the values to the prefs
@@ -114,44 +145,68 @@ Future<int> saveIntInLocalMemory(String key, int value) async {
   pref.setInt(key, value);
 }
 
-class MoneyDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Text(
-              'General Settings',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.green,
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Add money to your wallet'),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-        ],
+// No Money Pop-Up-o
+Widget _buildPopupDialog(BuildContext context) {
+  return new AlertDialog(
+    title: const Text('Oh no! Locked Feature!'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Can't spend real or fake money for this stuff just yet."),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: Text('Close'),
       ),
-    );
-  }
+    ],
+  );
 }
+
+
+// class MoneyDrawer extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         body: ListView(
+//           padding: EdgeInsets.zero,
+//           children: <Widget>[
+//             DrawerHeader(
+//               child: Text(
+//                 'General Settings',
+//                 style: TextStyle(color: Colors.white, fontSize: 25),
+//               ),
+//               decoration: BoxDecoration(
+//                 color: Colors.green,
+//               ),
+//             ),
+//             ListTile(
+//               leading: Icon(Icons.input),
+//               title: Text('Add money to your wallet'),
+//               onTap: () => {},
+//             ),
+//             ListTile(
+//               leading: Icon(Icons.verified_user),
+//               title: Text('Profile'),
+//               onTap: () => {Navigator.of(context).pop()},
+//             ),
+//             ListTile(
+//               leading: Icon(Icons.settings),
+//               title: Text('Settings'),
+//               onTap: () => {Navigator.of(context).pop()},
+//             ),
+//             ListTile(
+//               leading: Icon(Icons.exit_to_app),
+//               title: Text('Logout'),
+//               onTap: () => {Navigator.of(context).pop()},
+//             ),
+//           ],
+//         ),
+//       );
+//   }
+// }
