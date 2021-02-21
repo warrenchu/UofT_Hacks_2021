@@ -18,6 +18,7 @@ class Character {
 }
 
 const List<Character> allCharacters = <Character>[
+  Character('Avatar', Icons.accessibility,Colors.purple, [AssetImage('./assets/graphics-components/close-up-male-2.jpg'), AssetImage('./assets/graphics-components/male-close-up.jpg')]),
   Character('Eyes', Icons.remove_red_eye, Colors.teal, [AssetImage('./assets/graphics-components/brown-eyes.jpg'),AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
   Character('Hair', Icons.face, Colors.cyan, [AssetImage('./assets/graphics-components/blonde-hair.jpg'), AssetImage('./assets/graphics-components/red-hair.jpg')]),
   Character('Shirt', Icons.checkroom, Colors.orange, [AssetImage('./assets/graphics-components/white-shirt.jpg'),AssetImage('./assets/graphics-components/black-shirt.jpg')]),
@@ -66,9 +67,9 @@ class _CharacterViewState extends State<CharacterView> {
         alignment: Alignment.bottomLeft,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children:[
-         FirstOption(character: widget.character),
-         SecondOption(character: widget.character)
+        children:[ 
+          FirstOption(character: widget.character),
+          SecondOption(character: widget.character)
         ])
       ),
       Container(
