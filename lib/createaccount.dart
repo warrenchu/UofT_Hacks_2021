@@ -2,96 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'questionnaire.dart';
 
+
+buildTextField(obscured, hiddenText){
+  final temp = TextField(
+      obscureText: obscured,
+      style: style,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: hiddenText,
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    );
+
+    return temp;
+}
+
+
 class CreateNewAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
-    final firstNameField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "First Name",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final lastNameField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Last Name",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final emailField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email address- example@example.ca",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final passwordField = TextField(
-      obscureText: true,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Password",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-    );
-    final createAccountButton = Material(
-      elevation: 6.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {},
-        child: Text("Create Account",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
-    final submitButton = Material(
-        elevation: 6.0,
-        borderRadius: BorderRadius.circular(30.0),
-        color: Color(0xFF008000),
-        child: MaterialButton(
-          minWidth: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () {
-            // return to the login screen
-            Navigator.pop(context);
-          },
-          child: Text("Create Account",
-              textAlign: TextAlign.center,
-              style: style.copyWith(
-                  color: Colors.white, fontWeight: FontWeight.bold)),
-        ));
-    final goBackButton = Material(
-        elevation: 6.0,
-        borderRadius: BorderRadius.circular(30.0),
-        color: Color(0xff01A0C7),
-        child: MaterialButton(
-          minWidth: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          onPressed: () {
-            // return to the login screen
-            Navigator.pop(context);
-          },
-          child: Text("Back",
-              textAlign: TextAlign.center,
-              style: style.copyWith(
-                  color: Colors.white, fontWeight: FontWeight.bold)),
-        ));
+    final firstNameField = buildTextField(false, "First Name");
+    final lastNameField = buildTextField(false, "Last Name");
+    final emailField = buildTextField(false, "Email address- example@example.ca"); 
+    final passwordField = buildTextField(true, "Password"); 
     return Scaffold(
         appBar:
-            AppBar(title: const Text('Create an account'), actions: <Widget>[
+            AppBar(title: const Text('Create an Account: Basic Info'), actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.arrow_forward_ios),
             tooltip: "Create account",
