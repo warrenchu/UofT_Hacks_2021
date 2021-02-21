@@ -52,39 +52,14 @@ class _HomeState extends State<Home> {
           icon: const Icon(Icons.exit_to_app),
           tooltip: "Log Out",
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MyApp()));
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => _buildPopupDialog(context),
+            );
           },
         ),
-        // IconButton(
-        //   icon: const Icon(Icons.person),
-        //   tooltip: "Character Creator",
-        //   onPressed: () {
-        //     Navigator.push(
-        //         context,
-        //         MaterialPageRoute(
-        //             builder: (context) => MaterialApp(home: CharacterCreate())));
-        //   },
-        // )
       ]),
       body: Stack(fit: StackFit.expand, children: [GameController().widget]),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: 0, // this will be set when a new tab is tapped
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: null,
-      //       title: new Text('Store'),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: new Icon(Icons.home),
-      //       title: new Text('Home'),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: null,
-      //       title: new Text('Store'),
-      //     ),
-      //   ],
-      // ),
     );
   }
 
@@ -109,4 +84,35 @@ void rungame() async {
   // over the background
 
   runApp(runGameApp());
+}
+
+// Log Out Check
+Widget _buildPopupDialog(BuildContext context) {
+  return new AlertDialog(
+    title: const Text('Are you sure you want to log out?'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Clicking yes will return you to Sign-In Screen."),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: Text('No'),
+      ),
+      new FlatButton(
+        onPressed: () {
+          Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MyApp()));
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: Text('Yes'),
+      ),
+    ],
+  );
 }

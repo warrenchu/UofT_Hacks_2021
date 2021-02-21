@@ -28,59 +28,11 @@ class _MoneyTrackerState extends State<MoneyTracker> {
   int savingsCounter = 600;
   int pocketMoney = 600;
 
-// // Initiate the variables
-//   void initState() {
-//     super.initState();
-//     getIntFromLocalMemory('savingsCounter')
-//         .then((value) => savingsCounter = value);
-//     getIntFromLocalMemory('pocketMoney').then((n) => pocketMoney = n);
-//   }
-
-//   void addToTotal() {
-//     setState(() {
-//       savingsCounter++;
-//     });
-//     saveIntInLocalMemory('savingsCounter', savingsCounter);
-//   }
-
-//   void addToPocket() {
-//     setState(() {
-//       pocketMoney++;
-//     });
-//     saveIntInLocalMemory('pocketMoney', pocketMoney);
-//   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Funding')),
-        //title: 
-        // Column(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   children: <Widget>[
-        //     Text(
-        //       'Total Savings: ${savingsCounter}',
-        //     ),
-        //     Text(
-        //       'Avatar Spending Money: ${pocketMoney}',
-        //     ),
-        //   ],
-        // ),
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: Icon(Icons.account_balance_wallet_outlined),
-        //     tooltip: 'Add funds',
-        //     onPressed: () => {
-        //       // Something
-        //     },
-        //   ), //IconButton
-        //   IconButton(
-        //     icon: Icon(Icons.settings),
-        //     tooltip: 'Setting Icon',
-        //     onPressed: () {},
-        //   ), //IconButton
-        // ],
-      // ),
+
       body: Center(
         child: Container(
           color: Colors.white,
@@ -102,6 +54,25 @@ class _MoneyTrackerState extends State<MoneyTracker> {
                               'Pocket Money: ${pocketMoney}',
                               textScaleFactor: 2,
                               textDirection: TextDirection.ltr)),
+                Material(
+                  elevation: 6.0,
+                  borderRadius: BorderRadius.circular(3.0),
+                  color: Color(0xff01A0C7),
+                  child: MaterialButton(
+                    minWidth: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => _buildPopupDialog(context),
+                      );
+                    },
+                    child: Text("Deposit Funds",
+                        textAlign: TextAlign.center,
+                        style:
+                            style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                  ),
+                ),
                 Material(
                   elevation: 6.0,
                   borderRadius: BorderRadius.circular(3.0),
@@ -168,45 +139,3 @@ Widget _buildPopupDialog(BuildContext context) {
   );
 }
 
-
-// class MoneyDrawer extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: ListView(
-//           padding: EdgeInsets.zero,
-//           children: <Widget>[
-//             DrawerHeader(
-//               child: Text(
-//                 'General Settings',
-//                 style: TextStyle(color: Colors.white, fontSize: 25),
-//               ),
-//               decoration: BoxDecoration(
-//                 color: Colors.green,
-//               ),
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.input),
-//               title: Text('Add money to your wallet'),
-//               onTap: () => {},
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.verified_user),
-//               title: Text('Profile'),
-//               onTap: () => {Navigator.of(context).pop()},
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.settings),
-//               title: Text('Settings'),
-//               onTap: () => {Navigator.of(context).pop()},
-//             ),
-//             ListTile(
-//               leading: Icon(Icons.exit_to_app),
-//               title: Text('Logout'),
-//               onTap: () => {Navigator.of(context).pop()},
-//             ),
-//           ],
-//         ),
-//       );
-//   }
-// }
