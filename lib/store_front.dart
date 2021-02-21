@@ -2,6 +2,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
+import 'store_catalogue.dart';
+
 class StoreFront extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,10 @@ class StoreFront extends StatelessWidget {
 
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
 
-buildMenuButton(context, prompt){
+// Routes to Catalogues
+final goToHair = StoreCatalogueHair();
+
+buildMenuButton(context, prompt, onClick){
   final tempButton = Material(
           elevation: 6.0,
           color: Color(0xff01A0C7),
@@ -24,8 +29,10 @@ buildMenuButton(context, prompt){
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-              // the actual main method is called rungame in maingame.dart
-              // transition over to the game
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => onClick),
+              );
             },
             child: Text(prompt,
                 textAlign: TextAlign.center,
@@ -40,7 +47,7 @@ buildMenuButton(context, prompt){
 buildMenuButtonLocked(context, prompt){
   final tempButton = Material(
           elevation: 6.0,
-          color: Color(0xff01A0C7),
+          color: Color(0xFF757575),
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -100,15 +107,15 @@ class _storeFrontState extends State<storeFront> {
       shrinkWrap: true,
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        buildMenuButton(context, "Hair"),
+        buildMenuButton(context, "Hair", goToHair),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Shirt"),
+        buildMenuButton(context, "Shirt", null),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Pants"),
+        buildMenuButton(context, "Pants", null),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Shoes"),
+        buildMenuButtonLocked(context, "Shoes"),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Accessories"),
+        buildMenuButtonLocked(context, "Accessories"),
         SizedBox(height: 10.0),
         buildMenuButtonLocked(context, "Home"),
         SizedBox(height: 10.0),
