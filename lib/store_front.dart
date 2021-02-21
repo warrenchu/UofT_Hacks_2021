@@ -14,6 +14,8 @@ class StoreFront extends StatelessWidget {
   }
 }
 
+TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
+
 buildMenuButton(context, prompt){
   final tempButton = Material(
           elevation: 6.0,
@@ -33,6 +35,52 @@ buildMenuButton(context, prompt){
     );
 
   return tempButton;
+}
+
+buildMenuButtonLocked(context, prompt){
+  final tempButton = Material(
+          elevation: 6.0,
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => _buildPopupDialog(context),
+              );
+            },
+            child: Text(prompt,
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+    );
+
+  return tempButton;
+}
+
+// Pop-up Window Thing
+Widget _buildPopupDialog(BuildContext context) {
+  return new AlertDialog(
+    title: const Text('Oh no! Locked Feature!'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Currently unavailable for use in demo."),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: Text('Close'),
+      ),
+    ],
+  );
 }
 
 class storeFront extends StatefulWidget {
@@ -62,10 +110,9 @@ class _storeFrontState extends State<storeFront> {
         SizedBox(height: 10.0),
         buildMenuButton(context, "Accessories"),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Home"),
+        buildMenuButtonLocked(context, "Home"),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Pets (Endgame)"),
-        SizedBox(height: 10.0),
+        buildMenuButtonLocked(context, "Pets (Endgame)"),
       ],
     );
 
@@ -99,16 +146,15 @@ class _storeFrontState extends State<storeFront> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                    height: 50.0,
+                    height: 30.0,
                     child: Text(
-                      "Item Type",
+                      "Categories:",
                       textDirection: TextDirection.ltr,
                       textAlign: TextAlign.start,
                       textScaleFactor: 1.7,
                     )),
                 menu,
-                SizedBox(height: 68.0),
-                backButton
+                // backButton
               ],
             ),
           ),
@@ -118,7 +164,7 @@ class _storeFrontState extends State<storeFront> {
   }
 }
 
-TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
+
 void main() {
   runApp(StoreFront());
 }
