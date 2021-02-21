@@ -142,8 +142,8 @@ class _storeFrontState extends State<storeFront> {
         },
         child: Text("Exit Store",
             textAlign: TextAlign.center,
-            style:
-                style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+            style: style.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
 
