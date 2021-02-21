@@ -5,18 +5,6 @@ import 'package:rbc_savings_game/maingame.dart';
 import 'maingame.dart';
 import 'store_catalogue.dart';
 
-class StoreFront extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // Create the widget context
-    return MaterialApp(
-      title: "Store Front",
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: storeFront(title: 'Store Front'),
-    );
-  }
-}
-
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
 
 // Routes to Catalogues
@@ -128,24 +116,24 @@ class _storeFrontState extends State<storeFront> {
       ],
     );
 
-    final backButton = Material(
-      elevation: 6.0,
-      color: Color(0xffff0000),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Home()),
-          );
-        },
-        child: Text("Exit Store",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
+    // final backButton = Material(
+    //   elevation: 6.0,
+    //   color: Color(0xffff0000),
+    //   child: MaterialButton(
+    //     minWidth: MediaQuery.of(context).size.width,
+    //     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+    //     onPressed: () {
+    //       Navigator.push(
+    //         context,
+    //         MaterialPageRoute(builder: (context) => Home()),
+    //       );
+    //     },
+    //     child: Text("Exit Store",
+    //         textAlign: TextAlign.center,
+    //         style: style.copyWith(
+    //             color: Colors.white, fontWeight: FontWeight.bold)),
+    //   ),
+    // );
 
     return Scaffold(
       appBar: AppBar(title: Text('Upgrade Store')),
@@ -167,7 +155,7 @@ class _storeFrontState extends State<storeFront> {
                       textScaleFactor: 1.7,
                     )),
                 menu,
-                backButton,
+                // backButton,
               ],
             ),
           ),
@@ -178,5 +166,5 @@ class _storeFrontState extends State<storeFront> {
 }
 
 void main() {
-  runApp(StoreFront());
+  runApp(storeFront());
 }

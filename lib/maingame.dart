@@ -28,7 +28,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Widget> _children = [StoreFront()];
+  final List<Widget> _children = [storeFront()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
           tooltip: "Go to store",
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => StoreFront()));
+                context, MaterialPageRoute(builder: (context) => storeFront()));
           },
         ),
         IconButton(
