@@ -135,12 +135,12 @@ class _storeFrontState extends State<storeFront> {
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          runGameApp();
+          Navigator.pop(context);
         },
         child: Text("Exit Store",
             textAlign: TextAlign.center,
-            style:
-                style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+            style: style.copyWith(
+                color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
 
