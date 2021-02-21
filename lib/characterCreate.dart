@@ -15,19 +15,19 @@ class Character {
 }
 
 const List<Character> allCharacters = <Character>[
-  Character('Avatar', Icons.accessibility, Colors.purple, [
+  Character('Avatar', Icons.accessibility, Colors.blue, [
     AssetImage('./assets/graphics-components/close-up-male-2.jpg'),
     AssetImage('./assets/graphics-components/male-close-up.jpg')
   ]),
-  Character('Eyes', Icons.remove_red_eye, Colors.teal, [
+  Character('Eyes', Icons.remove_red_eye, Colors.blue, [
     AssetImage('./assets/graphics-components/brown-eyes.jpg'),
     AssetImage('./assets/graphics-components/blue-eyes.jpg')
   ]),
-  Character('Hair', Icons.face, Colors.cyan, [
+  Character('Hair', Icons.face, Colors.blue, [
     AssetImage('./assets/graphics-components/blonde-hair.jpg'),
     AssetImage('./assets/graphics-components/red-hair.jpg')
   ]),
-  Character('Shirt', Icons.checkroom, Colors.orange, [
+  Character('Shirt', Icons.checkroom, Colors.blue, [
     AssetImage('./assets/graphics-components/white-shirt.jpg'),
     AssetImage('./assets/graphics-components/black-shirt.jpg')
   ]),
