@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Welcome'), actions: <Widget>[
+      appBar: AppBar(title: Text('Home Page'), actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.local_convenience_store),
           tooltip: "Go to store",
@@ -42,20 +42,20 @@ class _HomeState extends State<Home> {
           },
         ),
         IconButton(
-          icon: const Icon(Icons.rate_review),
-          tooltip: "Go to questionnaire",
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Questionnaire()));
-          },
-        ),
-        IconButton(
             icon: const Icon(Icons.monetization_on_outlined),
             tooltip: "Money tracker",
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MoneyTracker()));
             }),
+        IconButton(
+          icon: const Icon(Icons.exit_to_app),
+          tooltip: "Log Out",
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => MyApp()));
+          },
+        ),
         // IconButton(
         //   icon: const Icon(Icons.person),
         //   tooltip: "Character Creator",
@@ -68,19 +68,23 @@ class _HomeState extends State<Home> {
         // )
       ]),
       body: Stack(fit: StackFit.expand, children: [GameController().widget]),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
-        items: [
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text('Home'),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(Icons.local_convenience_store),
-            title: new Text('Store'),
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: 0, // this will be set when a new tab is tapped
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: null,
+      //       title: new Text('Store'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: new Icon(Icons.home),
+      //       title: new Text('Home'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: null,
+      //       title: new Text('Store'),
+      //     ),
+      //   ],
+      // ),
     );
   }
 
