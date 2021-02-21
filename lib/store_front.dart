@@ -125,24 +125,6 @@ class _storeFrontState extends State<storeFront> {
       ],
     );
 
-    // final backButton = Material(
-    //   elevation: 6.0,
-    //   color: Color(0xFFFF0000),
-    //   child: MaterialButton(
-    //     minWidth: MediaQuery.of(context).size.width,
-    //     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-    //     // For onPressed, activate the actual game
-    //     onPressed: () {
-    //       // the actual main method is called rungame in maingame.dart
-    //       // transition over to the game
-    //     },
-    //     child: Text("Back",
-    //         textAlign: TextAlign.center,
-    //         style: style.copyWith(
-    //             color: Colors.white, fontWeight: FontWeight.bold)),
-    //   ),
-    // );
-
     return Scaffold(
       appBar: AppBar(title: Text('Upgrade Store')),
       body: Center(
