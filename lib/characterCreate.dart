@@ -2,20 +2,23 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+ 
+ var displayImage; 
 
 class Character {
-  const Character(this.title, this.icon, this.color);
+  const Character(this.title, this.icon, this.color, this.images);
   final String title;
   final IconData icon;
   final MaterialColor color;
+  final List<AssetImage> images;
+  
 }
 
 const List<Character> allCharacters = <Character>[
-  Character('Eyes', Icons.home, Colors.teal),
-  Character('Hair', Icons.business, Colors.cyan),
-  Character('Shirt', Icons.school, Colors.orange),
-  Character('Pants', Icons.flight, Colors.blue),
+  Character('Eyes', Icons.home, Colors.teal, [AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
+  Character('Hair', Icons.business, Colors.cyan, [AssetImage('./assets/graphics-components/blonde-hair.jpg')]),
+  Character('Shirt', Icons.school, Colors.orange, [AssetImage('./assets/graphics-components/white-shirt.jpg')]),
+  Character('Pants', Icons.flight, Colors.blue, [AssetImage('./assets/graphics-components/black-pants.jpg')])
 ];
 
 class CharacterView extends StatefulWidget {
@@ -28,6 +31,8 @@ class CharacterView extends StatefulWidget {
 }
 
 class _CharacterViewState extends State<CharacterView> {
+  // displayImage = Image(image: widget.character.image);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +49,8 @@ class _CharacterViewState extends State<CharacterView> {
           borderRadius: const BorderRadius.all(const Radius.circular(8)),
         ),
         padding: const EdgeInsets.all(32.0),
-        alignment: Alignment.bottomLeft
+        alignment: Alignment.bottomLeft,
+        child: Image(widget.character.images[0])
       ),
       Container(
         height: 200,
@@ -57,9 +63,8 @@ class _CharacterViewState extends State<CharacterView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children:[
-          FirstPush(character: widget.character),
-          FirstPush(character: widget.character),
-          FirstPush(character: widget.character)
+         FirstPush(character: widget.character),
+         FirstPush(character: widget.character)
         ])
       )
       ],)
@@ -67,41 +72,27 @@ class _CharacterViewState extends State<CharacterView> {
   }
 }
 
-class FirstPush extends StatelessWidget {
+
+class FirstPush extends StatefulWidget {
   const FirstPush({ Key key, this.character }) : super(key: key);
 
   final Character character;
   @override
+  _FirstPush createState() => _FirstPush();
+}
+
+class _FirstPush extends State<FirstPush> {
+  int currentindex = 0;
+  
+  @override
   Widget build(BuildContext context) {
     return  Center( 
       child: ElevatedButton(
-        child: Text('${character.title}'),
+        child: Text('${widget.character.title}'),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SecondRoute()),
-            );
+           
           },
     ));
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
-      ),
-    );
   }
 }
 
@@ -134,6 +125,7 @@ class _HomePageState extends State<HomePage>{
         },
         items: allCharacters.map((Character character) {
           return BottomNavigationBarItem(
+            
             icon: Icon(character.icon),
             backgroundColor: character.color,
             title: Text(character.title)
