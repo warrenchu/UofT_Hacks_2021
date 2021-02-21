@@ -18,10 +18,10 @@ class Character {
 }
 
 const List<Character> allCharacters = <Character>[
-  Character('Avatar', Icons.accessibility,Colors.purple, [AssetImage('./assets/graphics-components/close-up-male-2.jpg'), AssetImage('./assets/graphics-components/male-close-up.jpg')]),
-  Character('Eyes', Icons.remove_red_eye, Colors.teal, [AssetImage('./assets/graphics-components/brown-eyes.jpg'),AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
-  Character('Hair', Icons.face, Colors.cyan, [AssetImage('./assets/graphics-components/blonde-hair.jpg'), AssetImage('./assets/graphics-components/red-hair.jpg')]),
-  Character('Shirt', Icons.checkroom, Colors.orange, [AssetImage('./assets/graphics-components/white-shirt.jpg'),AssetImage('./assets/graphics-components/black-shirt.jpg')]),
+  Character('Avatar', Icons.accessibility,Colors.blue, [AssetImage('./assets/graphics-components/close-up-male-2.jpg'), AssetImage('./assets/graphics-components/male-close-up.jpg')]),
+  Character('Eyes', Icons.remove_red_eye, Colors.blue, [AssetImage('./assets/graphics-components/brown-eyes.jpg'),AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
+  Character('Hair', Icons.face, Colors.blue, [AssetImage('./assets/graphics-components/blonde-hair.jpg'), AssetImage('./assets/graphics-components/red-hair.jpg')]),
+  Character('Shirt', Icons.checkroom, Colors.blue, [AssetImage('./assets/graphics-components/white-shirt.jpg'),AssetImage('./assets/graphics-components/black-shirt.jpg')]),
   Character('Pants', Icons.airline_seat_legroom_normal, Colors.blue, [AssetImage('./assets/graphics-components/black-pants.jpg'),AssetImage('./assets/graphics-components/blue-pants.jpg')])
 ];
 
@@ -74,7 +74,7 @@ class _CharacterViewState extends State<CharacterView> {
       ),
       Container(
         height: 47,
-        color: widget.character.color[75],
+        color: Colors.white,
         width: MediaQuery.of(context).size.width,
         child:TextButton(
           child: Text('Procced'),
