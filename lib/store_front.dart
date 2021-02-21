@@ -14,6 +14,27 @@ class StoreFront extends StatelessWidget {
   }
 }
 
+buildMenuButton(context, prompt){
+  final tempButton = Material(
+          elevation: 6.0,
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+              // the actual main method is called rungame in maingame.dart
+              // transition over to the game
+            },
+            child: Text(prompt,
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+    );
+
+  return tempButton;
+}
+
 class storeFront extends StatefulWidget {
   storeFront({Key key, this.title}) : super(key: key);
   final String title;
@@ -27,145 +48,44 @@ class _storeFrontState extends State<storeFront> {
       TextStyle(fontFamily: 'Montserrat', fontSize: 20.0, color: Colors.white);
   @override
   Widget build(BuildContext context) {
-    final List<String> storeCategories = <String>[
-      'Hair',
-      'Shirt',
-      'Pants',
-      'Shoes'
-    ];
-    final List<int> colorCodes = <int>[600, 500, 200, 100];
     final menu = ListView(
       shrinkWrap: true,
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // the actual main method is called rungame in maingame.dart
-              // transition over to the game
-            },
-            child: Text("Hair",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        ),
+        buildMenuButton(context, "Hair"),
         SizedBox(height: 10.0),
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // Go to page
-            },
-            child: Text("Shirt",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        ),
+        buildMenuButton(context, "Shirt"),
         SizedBox(height: 10.0),
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // Go to page
-            },
-            child: Text("Pants",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        ),
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // Go to page
-            },
-            child: Text("Shoes",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        ),
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // Go to page
-            },
-            child: Text("Accessories",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        ),
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // Go to page
-            },
-            child: Text("Home",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        ),
-        Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              // Go to page
-            },
-            child: Text("Pets",
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-        )
+        buildMenuButton(context, "Pants"),
+        SizedBox(height: 10.0),
+        buildMenuButton(context, "Shoes"),
+        SizedBox(height: 10.0),
+        buildMenuButton(context, "Accessories"),
+        SizedBox(height: 10.0),
+        buildMenuButton(context, "Home"),
+        SizedBox(height: 10.0),
+        buildMenuButton(context, "Pets (Endgame)"),
+        SizedBox(height: 10.0),
       ],
     );
 
-    final backButton = Material(
-      elevation: 6.0,
-      color: Color(0xFFFF0000),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        // For onPressed, activate the actual game
-        onPressed: () {
-          // the actual main method is called rungame in maingame.dart
-          // transition over to the game
-        },
-        child: Text("Back",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
+    // final backButton = Material(
+    //   elevation: 6.0,
+    //   color: Color(0xFFFF0000),
+    //   child: MaterialButton(
+    //     minWidth: MediaQuery.of(context).size.width,
+    //     padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+    //     // For onPressed, activate the actual game
+    //     onPressed: () {
+    //       // the actual main method is called rungame in maingame.dart
+    //       // transition over to the game
+    //     },
+    //     child: Text("Back",
+    //         textAlign: TextAlign.center,
+    //         style: style.copyWith(
+    //             color: Colors.white, fontWeight: FontWeight.bold)),
+    //   ),
+    // );
 
     return Scaffold(
       appBar: AppBar(title: Text('Upgrade Store')),
