@@ -15,6 +15,7 @@ class Character {
 }
 
 const List<Character> allCharacters = <Character>[
+<<<<<<< HEAD
   Character('Avatar', Icons.remove_shopping_cart_outlined, Colors.purple,
       [AssetImage('./assets/graphics-components/male-close-up.jpg')]),
   Character('Eyes', Icons.remove_red_eye, Colors.teal, [
@@ -33,6 +34,13 @@ const List<Character> allCharacters = <Character>[
     AssetImage('./assets/graphics-components/black-pants.jpg'),
     AssetImage('./assets/graphics-components/blue-pants.jpg')
   ])
+=======
+  Character('Avatar', Icons.accessibility,Colors.purple, [AssetImage('./assets/graphics-components/close-up-male-2.jpg'), AssetImage('./assets/graphics-components/male-close-up.jpg')]),
+  Character('Eyes', Icons.remove_red_eye, Colors.teal, [AssetImage('./assets/graphics-components/brown-eyes.jpg'),AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
+  Character('Hair', Icons.face, Colors.cyan, [AssetImage('./assets/graphics-components/blonde-hair.jpg'), AssetImage('./assets/graphics-components/red-hair.jpg')]),
+  Character('Shirt', Icons.checkroom, Colors.orange, [AssetImage('./assets/graphics-components/white-shirt.jpg'),AssetImage('./assets/graphics-components/black-shirt.jpg')]),
+  Character('Pants', Icons.airline_seat_legroom_normal, Colors.blue, [AssetImage('./assets/graphics-components/black-pants.jpg'),AssetImage('./assets/graphics-components/blue-pants.jpg')])
+>>>>>>> 0957514c4ceaee496c41160f397742aca79c838e
 ];
 
 class CharacterView extends StatefulWidget {
