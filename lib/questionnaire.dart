@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'maingame.dart';
 
 class Questionnaire extends StatelessWidget {
   @override
@@ -24,56 +25,58 @@ class QuestionnairePage extends StatefulWidget {
 final TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
 // Creates Button Template
-buildButton(buildContext, buildClick, buildText){
+buildButton(buildContext, buildClick, buildText) {
   final tempButton = Material(
-      elevation: 6.0,
-      borderRadius: BorderRadius.circular(3.0),
-      color: Color(0xff01A0C7),
-      child: MaterialButton(
-        minWidth: MediaQuery.of(buildContext).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () {
-          Navigator.push(
-            buildContext,
-            MaterialPageRoute(builder: (context) => buildClick),
-          );
-        },
-        child: Text(buildText,
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-      ),
-    );
+    elevation: 6.0,
+    borderRadius: BorderRadius.circular(3.0),
+    color: Color(0xff01A0C7),
+    child: MaterialButton(
+      minWidth: MediaQuery.of(buildContext).size.width,
+      padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      onPressed: () {
+        Navigator.push(
+          buildContext,
+          MaterialPageRoute(builder: (context) => buildClick),
+        );
+      },
+      child: Text(buildText,
+          textAlign: TextAlign.center,
+          style:
+              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+    ),
+  );
 
-    return tempButton;
+  return tempButton;
 }
 
 // TextField Template
-buildTextField(){
+buildTextField() {
   final tempField = TextField(
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Round to the Nearest Dollar",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-    );
+    obscureText: false,
+    style: style,
+    decoration: InputDecoration(
+        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        hintText: "Round to the Nearest Dollar",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    keyboardType: TextInputType.number,
+    inputFormatters: <TextInputFormatter>[
+      FilteringTextInputFormatter.digitsOnly
+    ],
+  );
 
-    return tempField;
+  return tempField;
 }
 
 class _QuestionnairePageState1 extends State<QuestionnairePage> {
   @override
   Widget build(BuildContext context) {
     // card number
-    final question1a1 = buildButton(context, _QuestionnairePageState2(), "Salaried");
-    final question1a2 = buildButton(context, _QuestionnairePageState2(), "Freelance / Contract");
-    final question1a3 = buildButton(context, _QuestionnairePageState2(), "Hourly Wage");
+    final question1a1 =
+        buildButton(context, _QuestionnairePageState2(), "Salaried");
+    final question1a2 = buildButton(
+        context, _QuestionnairePageState2(), "Freelance / Contract");
+    final question1a3 =
+        buildButton(context, _QuestionnairePageState2(), "Hourly Wage");
 
     return Scaffold(
       appBar: AppBar(title: Text('Personal Info: Work')),
@@ -91,7 +94,6 @@ class _QuestionnairePageState1 extends State<QuestionnairePage> {
                     child: Text("What type of work do you do?",
                         textScaleFactor: 1.7,
                         textDirection: TextDirection.ltr)),
-
                 SizedBox(height: 15.0),
                 question1a1,
                 SizedBox(height: 15.0),
@@ -110,9 +112,12 @@ class _QuestionnairePageState1 extends State<QuestionnairePage> {
 class _QuestionnairePageState2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final question2a1 = buildButton(context, _QuestionnairePageState3(), "Weekly");
-    final question2a2 = buildButton(context, _QuestionnairePageState3(), "Biweekly");
-    final question2a3 = buildButton(context, _QuestionnairePageState3(), "Intermittently");
+    final question2a1 =
+        buildButton(context, _QuestionnairePageState3(), "Weekly");
+    final question2a2 =
+        buildButton(context, _QuestionnairePageState3(), "Biweekly");
+    final question2a3 =
+        buildButton(context, _QuestionnairePageState3(), "Intermittently");
 
     return Scaffold(
       appBar: AppBar(title: Text('Personal Info: Pay Frequency')),
@@ -130,7 +135,6 @@ class _QuestionnairePageState2 extends StatelessWidget {
                     child: Text("How often do you get paid?",
                         textScaleFactor: 1.7,
                         textDirection: TextDirection.ltr)),
-
                 SizedBox(height: 45.0),
                 question2a1,
                 SizedBox(height: 15.0),
@@ -164,12 +168,14 @@ class _QuestionnairePageState3 extends StatelessWidget {
               children: <Widget>[
                 SizedBox(
                     height: 70.0,
-                    child: Text("How Much Do You Want To Save For Your Emergency Fund?",
+                    child: Text(
+                        "How Much Do You Want To Save For Your Emergency Fund?",
                         textScaleFactor: 1.3,
                         textDirection: TextDirection.ltr)),
                 SizedBox(
                     height: 70.0,
-                    child: Text("Financial experts recommend 3 to 6 months of your household income.",
+                    child: Text(
+                        "Financial experts recommend 3 to 6 months of your household income.",
                         textDirection: TextDirection.ltr)),
                 question3,
                 SizedBox(height: 10.0),
@@ -177,7 +183,8 @@ class _QuestionnairePageState3 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => _QuestionnairePageState4()),
+                      MaterialPageRoute(
+                          builder: (context) => _QuestionnairePageState4()),
                     );
                   },
                   child: Text('Next'),
@@ -214,13 +221,15 @@ class _QuestionnairePageState4 extends StatelessWidget {
                         textDirection: TextDirection.ltr)),
                 SizedBox(
                     height: 70.0,
-                    child: Text("This amount will act as the baseline for your Avatar.",
+                    child: Text(
+                        "This amount will act as the baseline for your Avatar.",
                         textDirection: TextDirection.ltr)),
                 question4,
                 SizedBox(height: 10.0),
                 ElevatedButton(
                   onPressed: () {
                     // Go to Next Screen
+                    runGameApp();
                   },
                   child: Text('Submit User Info'),
                 ),
@@ -233,9 +242,6 @@ class _QuestionnairePageState4 extends StatelessWidget {
   }
 }
 
-
 void main() {
   runApp(Questionnaire());
 }
-
-
