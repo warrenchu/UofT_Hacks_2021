@@ -2,8 +2,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:rbc_savings_game/maingame.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'maingame.dart';
  
- var displayImage; 
+
 
 class Character {
   const Character(this.title, this.icon, this.color, this.images);
@@ -15,10 +18,10 @@ class Character {
 }
 
 const List<Character> allCharacters = <Character>[
-  Character('Eyes', Icons.home, Colors.teal, [AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
-  Character('Hair', Icons.business, Colors.cyan, [AssetImage('./assets/graphics-components/blonde-hair.jpg')]),
-  Character('Shirt', Icons.school, Colors.orange, [AssetImage('./assets/graphics-components/white-shirt.jpg')]),
-  Character('Pants', Icons.flight, Colors.blue, [AssetImage('./assets/graphics-components/black-pants.jpg')])
+  Character('Eyes', Icons.remove_red_eye, Colors.teal, [AssetImage('./assets/graphics-components/brown-eyes.jpg'),AssetImage('./assets/graphics-components/blue-eyes.jpg')]),
+  Character('Hair', Icons.face, Colors.cyan, [AssetImage('./assets/graphics-components/blonde-hair.jpg'), AssetImage('./assets/graphics-components/red-hair.jpg')]),
+  Character('Shirt', Icons.checkroom, Colors.orange, [AssetImage('./assets/graphics-components/white-shirt.jpg'),AssetImage('./assets/graphics-components/black-shirt.jpg')]),
+  Character('Pants', Icons.airline_seat_legroom_normal, Colors.blue, [AssetImage('./assets/graphics-components/black-pants.jpg'),AssetImage('./assets/graphics-components/blue-pants.jpg')])
 ];
 
 class CharacterView extends StatefulWidget {
@@ -31,7 +34,6 @@ class CharacterView extends StatefulWidget {
 }
 
 class _CharacterViewState extends State<CharacterView> {
-  // displayImage = Image(image: widget.character.image);
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,10 @@ class _CharacterViewState extends State<CharacterView> {
           borderRadius: const BorderRadius.all(const Radius.circular(8)),
         ),
         padding: const EdgeInsets.all(32.0),
-        alignment: Alignment.bottomLeft,
-        child: Image(widget.character.images[0])
+        alignment: Alignment.center,
+        child: 
+            Image(image: widget.character.images.last)
+      
       ),
       Container(
         height: 200,
@@ -63,9 +67,20 @@ class _CharacterViewState extends State<CharacterView> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children:[
-         FirstPush(character: widget.character),
-         FirstPush(character: widget.character)
+         FirstOption(character: widget.character),
+         SecondOption(character: widget.character)
         ])
+      ),
+      Container(
+        height: 47,
+        color: widget.character.color[75],
+        width: MediaQuery.of(context).size.width,
+        child:TextButton(
+          child: Text('Procced'),
+          onPressed: (){
+            runGameApp();
+          }
+        )
       )
       ],)
     );
@@ -73,24 +88,35 @@ class _CharacterViewState extends State<CharacterView> {
 }
 
 
-class FirstPush extends StatefulWidget {
-  const FirstPush({ Key key, this.character }) : super(key: key);
-
+class FirstOption extends StatelessWidget {
+  const FirstOption({ Key key, this.character }) : super(key: key);
+  
   final Character character;
+   
   @override
-  _FirstPush createState() => _FirstPush();
+  Widget build(BuildContext context) {
+    return  Center( 
+      child: ElevatedButton(
+        child: Image(image: character.images.first),
+          onPressed: () {
+           saveIntInLocalMemory('INDEX_NUMBER', 0);
+          },
+    ));
+  }
 }
 
-class _FirstPush extends State<FirstPush> {
-  int currentindex = 0;
+class SecondOption extends StatelessWidget {
+  const SecondOption({ Key key, this.character }) : super(key: key);
+
+  final Character character;
   
   @override
   Widget build(BuildContext context) {
     return  Center( 
       child: ElevatedButton(
-        child: Text('${widget.character.title}'),
+        child: Image(image: character.images.last),
           onPressed: () {
-           
+           saveIntInLocalMemory('INDEX_NUMBER', 1);
           },
     ));
   }
@@ -125,7 +151,6 @@ class _HomePageState extends State<HomePage>{
         },
         items: allCharacters.map((Character character) {
           return BottomNavigationBarItem(
-            
             icon: Icon(character.icon),
             backgroundColor: character.color,
             title: Text(character.title)
@@ -135,6 +160,18 @@ class _HomePageState extends State<HomePage>{
     );
   }
 }
+
+Future<int> getImageFromLocalMemory(String key) async {
+    var pref = await SharedPreferences.getInstance();
+    var int = pref.getInt(key) ?? 0;
+    return int;
+  }
+
+Future<void> saveIntInLocalMemory(String key, int value) async {
+    var pref = await SharedPreferences.getInstance();
+    pref.setInt(key, value);
+  }
+
 
 void main() {
   runApp(MaterialApp(home: HomePage(), debugShowCheckedModeBanner: false));
