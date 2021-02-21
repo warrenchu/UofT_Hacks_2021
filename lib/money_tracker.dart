@@ -2,6 +2,21 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
+// This file creates an app bar component to track pocket money and total saved.
+// Additionally, the app bar will allow users to deposit money into their Pocket Money "Wallet"
+
+void main() => runApp(Tracker());
+
+class Tracker extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: "App",
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: MoneyTracker());
+  }
+}
+
 class MoneyTracker extends StatefulWidget {
   @override
   _MoneyTrackerState createState() => new _MoneyTrackerState();
@@ -23,12 +38,7 @@ class _MoneyTrackerState extends State<MoneyTracker> {
     });
   }
 
-  void initState() {
-    addToTotal();
-    addToPocket();
-    super.initState();
-  }
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -60,6 +70,19 @@ class _MoneyTrackerState extends State<MoneyTracker> {
             tooltip: 'Setting Icon',
             onPressed: () {},
           ), //IconButton
+        ],
+      ),
+      body: new Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.fromLTRB(50.0, 160.0, 50.0, 0.0),
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            ),
+          )
         ],
       ),
     );
