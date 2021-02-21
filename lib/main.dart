@@ -61,7 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           // the actual main method is called rungame in maingame.dart
           // transition over to the game
-          rungame();
+          Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => runGameApp()));
         },
         child: Text("Login",
             textAlign: TextAlign.center,
