@@ -26,6 +26,8 @@ The app can be broken down into 3 main components.
 - Facilitating(design, development, maintenance): 
   - RBC(would have to implement the system, the back-end servers and keep it updated)
 
+Society has seen huge trends in virtual avatars such as Sims. These games are widely successful and they attract a demographic that have grown up playing them. We firmly believe that pairing this demographic with the age range that spends the most on in-app purchases creates a unique opportunity for our product to truly incentivize users to invest in an emergency fund through this game. 
+
 ## Why is it important to the primary audience?
 - Students and freelancers typically don’t have the same financial security as full time salary based employees. An emergency at the wrong time, during a time of low income, can cause plenty of financial aches especially if they haven’t set up an emergency fund. 
 - Having savings is important in case of emergency. 
@@ -35,6 +37,9 @@ The app can be broken down into 3 main components.
 - Incentivizes users to use money from paychecks to upgrade in-game avatars, in turn putting money in a secure account to be used for emergency funds. Upgrades can include clothing items, residences, pets, clothes for pets.
 - Notifications encouraging users to put in money can be set to match biweekly paydays or in a more infrequent manner to account for a freelancer’s unconventional pay cycle. - Reminds users to input savings every few days in order to keep their avatar happy. 
 - Give users the option to have a base amount in their emergency fund. If they withdraw and their funds are below the base amount, their avatar loses progress to some capacity.
+
+### UI Mockup for Future Implementation (Use Arrow Keys to Navigate)
+https://preview.uxpin.com/6a66ede10a0f9aa7c03071ebdfea7028312b1569#/pages/136920562?mode=c
 
 ## Resources
 This app was created using Flutter (https://flutter.dev/) and the pixel avatar characters are adapted from OpenGameArt- an open source art-forum (https://opengameart.org/content/24x32-bases-0) using the online tool PixilArt (https://pixilart.com).  
