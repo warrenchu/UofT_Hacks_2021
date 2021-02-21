@@ -21,6 +21,8 @@ TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
 
 // Routes to Catalogues
 final goToHair = StoreCatalogueHair();
+final goToShirts = StoreCatalogueShirts();
+final goToPants = StoreCataloguePants();
 
 buildMenuButton(context, prompt, onClick) {
   final tempButton = Material(
@@ -112,9 +114,9 @@ class _storeFrontState extends State<storeFront> {
       children: <Widget>[
         buildMenuButton(context, "Hair", goToHair),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Shirt", null),
+        buildMenuButton(context, "Shirt", goToShirts),
         SizedBox(height: 10.0),
-        buildMenuButton(context, "Pants", null),
+        buildMenuButton(context, "Pants", goToPants),
         SizedBox(height: 10.0),
         buildMenuButtonLocked(context, "Shoes"),
         SizedBox(height: 10.0),
