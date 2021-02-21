@@ -22,48 +22,48 @@ TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20);
 // Routes to Catalogues
 final goToHair = StoreCatalogueHair();
 
-buildMenuButton(context, prompt, onClick){
+buildMenuButton(context, prompt, onClick) {
   final tempButton = Material(
-          elevation: 6.0,
-          color: Color(0xff01A0C7),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => onClick),
-              );
-            },
-            child: Text(prompt,
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-    );
+    elevation: 6.0,
+    color: Color(0xff01A0C7),
+    child: MaterialButton(
+      minWidth: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => onClick),
+        );
+      },
+      child: Text(prompt,
+          textAlign: TextAlign.center,
+          style:
+              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+    ),
+  );
 
   return tempButton;
 }
 
-buildMenuButtonLocked(context, prompt){
+buildMenuButtonLocked(context, prompt) {
   final tempButton = Material(
-          elevation: 6.0,
-          color: Color(0xFF757575),
-          child: MaterialButton(
-            minWidth: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) => _buildPopupDialog(context),
-              );
-            },
-            child: Text(prompt,
-                textAlign: TextAlign.center,
-                style: style.copyWith(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-          ),
-    );
+    elevation: 6.0,
+    color: Color(0xFF757575),
+    child: MaterialButton(
+      minWidth: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) => _buildPopupDialog(context),
+        );
+      },
+      child: Text(prompt,
+          textAlign: TextAlign.center,
+          style:
+              style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+    ),
+  );
 
   return tempButton;
 }
@@ -82,13 +82,9 @@ Widget _buildPopupDialog(BuildContext context) {
     actions: <Widget>[
       new FlatButton(
         onPressed: () {
-<<<<<<< HEAD
           Navigator.pop(context);
           // the actual main method is called rungame in maingame.dart
           // transition over to the game
-=======
-          Navigator.of(context).pop();
->>>>>>> 0957514c4ceaee496c41160f397742aca79c838e
         },
         textColor: Theme.of(context).primaryColor,
         child: Text('Close'),
@@ -177,7 +173,6 @@ class _storeFrontState extends State<storeFront> {
     );
   }
 }
-
 
 void main() {
   runApp(StoreFront());

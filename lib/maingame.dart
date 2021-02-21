@@ -8,6 +8,7 @@ import 'package:rbc_savings_game/money_tracker.dart';
 import 'package:rbc_savings_game/questionnaire.dart';
 import 'main.dart';
 import 'store_front.dart';
+import 'characterCreate.dart';
 
 class runGameApp extends StatelessWidget {
   @override
@@ -49,11 +50,20 @@ class _HomeState extends State<Home> {
           },
         ),
         IconButton(
-          icon: const Icon(Icons.monetization_on_outlined),
-          tooltip: "Money tracker",
+            icon: const Icon(Icons.monetization_on_outlined),
+            tooltip: "Money tracker",
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MoneyTracker()));
+            }),
+        IconButton(
+          icon: const Icon(Icons.person),
+          tooltip: "Character Creator",
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MoneyTracker()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MaterialApp(home: HomePage())));
           },
         )
       ]),
